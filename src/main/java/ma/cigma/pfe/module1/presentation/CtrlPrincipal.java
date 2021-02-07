@@ -7,46 +7,110 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import ma.cigma.pfe.module1.models.Demand;
+
 /**
  * this main controller will be removed and replaced by
  * DispatcherServelet of Spring MVC
+ *
  * @author Mr.BOULCHAHOUB
  * @date 21.12.2020
  */
 public class CtrlPrincipal {
-	
-	static ApplicationContext context= new ClassPathXmlApplicationContext("spring.xml");
-	static DemandController ctrlDemande=(DemandController)context.getBean("ctrl");
-	static ClientController ctrlClient=(ClientController)context.getBean("beanclient");
+
+   /* static ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
+    static DemandController ctrlDemande = (DemandController) context.getBean("ctrl");
+    static ClientController ctrlClient = (ClientController) context.getBean("beanclient");
 
 
-	public static void main(String[] args) {
-		// Recuperer les donnees de user
-//		Scanner s = new Scanner(System.in);
-//		System.out.println("Saisir un code");
-//		String code= s.nextLine();
-//		System.out.println("Saisir un nb");
-//		int nb=s.nextInt();
+    public static void main(String[] args) {
 
-		Scanner s = new Scanner(System.in);
-		System.out.println("Saisir un nom");
-		String nom= s.nextLine();
+        Scanner s = new Scanner(System.in);
+        System.out.println("Saisir le number de l'interface \n" +
+                "1 - Client \n" +
+                "2 - Demand \n" +
+                "====================\n");
+        int tbl = s.nextInt();
+        if (tbl == 1) {
+            System.out.println("Saisir le number de l'action \n" +
+                    "1 - Ajouter un client \n" +
+                    "2 - Modifier le client \n" +
+                    "3 - Liste des clients \n" +
+                    "4 - Supprimer le client \n" +
+                    "5 - Trouver le client par id\n" +
+                    "====================\n");
+            int action = s.nextInt();
+            if (action == 1) {
+                // Recuperer les donnees de user
+                Scanner scanner = new Scanner(System.in);
+                System.out.println("Saisir votre prenom");
+                String firstname = scanner.nextLine();
+                System.out.println("Saisir votre nom");
+                String lastname = scanner.nextLine();
+                System.out.println("Saisir votre email");
+                String email = scanner.nextLine();
+                // construire l'objet
+                Client client = new Client();
+                client.setFirstname(firstname);
+                client.setLastname(lastname);
+                client.setEmail(email);
+                // dispatcher vers le controleur
+                System.out.println("====================\n" + ctrlClient.save(client));
+            } else if (action == 2) {
+                Scanner scanner = new Scanner(System.in);
+                System.out.println("Saisir un id");
+                int id = scanner.nextInt();
+                System.out.println("Saisir votre prenom");
+                String firstname = scanner.nextLine();
+                System.out.println("Saisir votre nom");
+                String lastname = scanner.nextLine();
+                System.out.println("Saisir votre email");
+                String email = scanner.nextLine();
+                // construire l'objet
+                Client client = new Client();
+                client.setId(id);
+                client.setFirstname(firstname);
+                client.setLastname(lastname);
+                client.setEmail(email);
+                // dispatcher vers le controleur
+                System.out.println("====================\n" + ctrlClient.update(client));
+            } else if (action == 3) {
+                System.out.println("====================\n " + ctrlClient.findAll());
+            } else if (action == 4) {
+                // Recuperer les donnees de user
+                System.out.println("Saisir un id");
+                int id = s.nextInt();
+                ctrlClient.delete(id);
+                System.out.println("====================\n le client a été supprimé avec succès");
+            } else if (action == 5) {
+                // Recuperer les donnees de user
+                System.out.println("Saisir un id");
+                int id = s.nextInt();
+                System.out.println("====================\n" + ctrlClient.getById(id));
+            }
+        } else if (tbl == 2) {
+            System.out.println("Saisir le number de l'action \n" +
+                    "1 - Ajouter un demande \n" +
+                    "2 - Modifier la demande \n" +
+                    "3 - Liste des demandes \n" +
+                    "4 - Supprimer la demande \n" +
+                    "5 - Trouver la demande par id\n" +
+                    "====================\n");
+            int action = s.nextInt();
+            if (action == 1) {
+                // Recuperer les donnees de user
+                System.out.println("Saisir votre compte");
+                String code = s.nextLine();
+                System.out.println("Saisir votre nb");
+                int nb = s.nextInt();
+                System.out.println("Saisir votre email");
+                String email = s.nextLine();
+                // construire l'objet
+                Demand d = new Demand();
+                d.setCompte(code);
+                d.setNb(nb);
+                System.out.println("====================\n" + ctrlDemande.save(d));
+            }
+        }
 
-
-		// construire l'objet
-		Demand d= new Demand();
-		//d.setCompte(code);
-		//d.setNb(nb);
-
-		Client client  = new Client();
-        client.setName(nom);
-		// dispatcher vers le controleur
-		String action="client/add";
-		if(action.equals("demand/add")) {
-			ctrlDemande.insert(d);
-		}
-		else if (action.equals("client/add")){
-			System.out.println(ctrlClient.save(client));
-		}
-	}
+    }*/
 }

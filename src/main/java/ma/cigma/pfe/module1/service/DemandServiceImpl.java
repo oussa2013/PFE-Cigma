@@ -5,43 +5,47 @@ import org.springframework.stereotype.Service;
 
 import ma.cigma.pfe.module1.dao.IDemandDao;
 import ma.cigma.pfe.module1.models.Demand;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.QueryHint;
+import java.util.List;
 
 /**
- * this class is created to validate all rules related to 
+ * this class is created to validate all rules related to
  * business logic
+ *
  * @author Mr.BOULCHAHOUB
  * @date 21.12.2020
  */
 @Service
+@Transactional
 public class DemandServiceImpl implements IDemandService {
-	@Autowired
-	private IDemandDao dao;
+    @Autowired
+    private IDemandDao dao;
 
-	@Override
-	public boolean insertDemand(Demand d) {
-		System.out.println("Calling service Insert...");
 
-		return dao.insert(d);
-	}
+    @Override
+    public Demand save(Demand demand) {
+        return dao.save(demand);
+    }
 
-	@Override
-	public boolean updateDemand(Demand d) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    @Override
+    public Demand update(Demand demand) {
+        return dao.update(demand);
+    }
 
-	@Override
-	public boolean deleteDemand(Demand d) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    @Override
+    public List<Demand> findAll() {
+        return dao.findAll();
+    }
 
-	@Override
-	public boolean selectDemand(Demand d) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    @Override
+    public Demand getById(Integer id) {
+        return getById(id);
+    }
 
+    @Override
+    public void delete(Integer id) {
+        dao.delete(id);
+    }
 }

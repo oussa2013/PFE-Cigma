@@ -1,12 +1,12 @@
 package ma.cigma.pfe.module1.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Transient;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+import javax.persistence.*;
+import java.time.LocalDate;
 
 /**
  * this class is created to contain data introduced by users Objects form this
@@ -18,47 +18,34 @@ import javax.persistence.Transient;
  */
 @Entity
 @Table(name = "TDemands")
+@Getter @Setter
+@ToString
 public class Demand {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	//Identity = AUTOINCREMENT
 	//SEQUENCE = UTILISE UNE SEQUENCE [SEQUNCE SGBD]
 	//TABLE = hibernate_sequences
 	//AUTO= CHOISIR UNE DES TROIS
-	private int id;
+	@Column(name="id")
+	private Integer id;
+
 	@Column(name="cmp")
 	private String compte;
+
+	@Column(name="nb")
 	private int nb;
-	@Transient
-	int age;
 
-	public int getId() {
-		return id;
-	}
+	@Column(name="statut")
+	private String status;
 
-	public void setId(int id) {
-		this.id = id;
-	}
+	@Column(name="date_demand")
+	private LocalDate dateDemand;
 
-	public String getCompte() {
-		return compte;
-	}
 
-	@Override
-	public String toString() {
-		return "Demand [compte=" + compte + ", nb=" + nb + "]";
-	}
+	/*@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_client", nullable = false)
+	private Client client ;*/
 
-	public void setCompte(String compte) {
-		this.compte = compte;
-	}
-
-	public int getNb() {
-		return nb;
-	}
-
-	public void setNb(int nb) {
-		this.nb = nb;
-	}
 
 }

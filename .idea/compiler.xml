@@ -11,7 +11,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="PFE" target="1.7" />
+      <module name="PFE" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>

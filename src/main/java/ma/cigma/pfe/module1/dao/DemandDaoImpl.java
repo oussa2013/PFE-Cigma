@@ -4,6 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import ma.cigma.pfe.module1.dao.crud.CrudRepositoryImpl;
 import org.springframework.stereotype.Repository;
 
 import ma.cigma.pfe.module1.models.Demand;
@@ -18,8 +19,11 @@ import ma.cigma.pfe.module1.models.Demand;
  * @date 21.12.2020
  */
 @Repository
-public class DemandDaoImpl implements IDemandDao {
-    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("abc");
+public class DemandDaoImpl extends CrudRepositoryImpl<Demand> implements IDemandDao {
+
+
+
+/*    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("abc");
     private EntityManager em = emf.createEntityManager();
     @Override
     public boolean insert(Demand d) {
@@ -30,13 +34,13 @@ public class DemandDaoImpl implements IDemandDao {
 		return false;
     }
 
-    /*	public static void main(String[] args) {
+    *//*	public static void main(String[] args) {
             IDemandDao dao = new DemandDaoImpl();
             Demand d= new Demand();
             d.setCompte("A200");
             d.setNb(30);
             dao.insert(d);
-        }*/
+        }*//*
     @Override
     public boolean update(Demand d) {
         return false;
@@ -50,6 +54,6 @@ public class DemandDaoImpl implements IDemandDao {
     @Override
     public boolean select(Demand d) {
         return false;
-    }
+    }*/
 
 }
