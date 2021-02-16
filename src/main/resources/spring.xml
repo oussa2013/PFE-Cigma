@@ -10,11 +10,11 @@
 <context:component-scan base-package="ma.cigma.pfe.module1.presentation"></context:component-scan>
 		
 	<bean id="ctrl"
-		class="ma.cigma.pfe.module1.presentation.DemandController">
+		class="ma.cigma.pfe.module1.presentation.controller.DemandController">
 	</bean>
 
 	<bean id="beanclient"
-		  class="ma.cigma.pfe.module1.presentation.ClientController">
+		  class="ma.cigma.pfe.module1.presentation.controller.ClientController">
 	</bean>
 
 </beans>

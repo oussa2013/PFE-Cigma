@@ -1,13 +1,12 @@
 package ma.cigma.pfe.module1.service;
 
+import ma.cigma.pfe.module1.presentation.models.DemandDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ma.cigma.pfe.module1.dao.IDemandDao;
-import ma.cigma.pfe.module1.models.Demand;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.QueryHint;
 import java.util.List;
 
 /**
@@ -25,22 +24,22 @@ public class DemandServiceImpl implements IDemandService {
 
 
     @Override
-    public Demand save(Demand demand) {
-        return dao.save(demand);
+    public DemandDto save(DemandDto demandDto) {
+        return dao.save(demandDto);
     }
 
     @Override
-    public Demand update(Demand demand) {
-        return dao.update(demand);
+    public DemandDto update(DemandDto demandDto) {
+        return dao.update(demandDto);
     }
 
     @Override
-    public List<Demand> findAll() {
+    public List<DemandDto> findAll() {
         return dao.findAll();
     }
 
     @Override
-    public Demand getById(Integer id) {
+    public DemandDto getById(Integer id) {
         return getById(id);
     }
 

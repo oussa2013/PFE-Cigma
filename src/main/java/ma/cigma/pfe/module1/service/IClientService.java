@@ -1,6 +1,6 @@
 package ma.cigma.pfe.module1.service;
 
-import ma.cigma.pfe.module1.models.Client;
+import ma.cigma.pfe.module1.presentation.models.ClientDto;
 
 import java.util.List;
 
@@ -9,13 +9,13 @@ import java.util.List;
  */
 public interface IClientService {
 
-    Client save(Client client);
+    ClientDto save(ClientDto client);
 
-    Client update(Client client);
+    ClientDto update(ClientDto client);
 
-    List<Client> findAll();
+    List<ClientDto> findAll();
 
-    Client getById(Integer id);
+    ClientDto getById(Integer id);
 
     void delete(Integer id);
 

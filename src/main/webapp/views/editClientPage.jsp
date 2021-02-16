@@ -7,7 +7,6 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="f" %>
-
 <html>
 <header>
     <div class="logo">Cigma<span>D2J</span></div>
@@ -21,7 +20,7 @@
         <nav>
             <a href="#">Cigma<span>D2J</span></a>
             <ul>
-                <li class="active"><a href="#">Nouveau client</a></li>
+                <li class="active"><a href="#">Modifier le client</a></li>
                 <li><a href="../client/home">Listdes clients</a></li>
                 <li><a href="#">Demand</a></li>
             </ul>
@@ -33,7 +32,8 @@
         <p>Nouveau client</p>
         <section>
             <div class="section">
-                <f:form modelAttribute="client" action="../client/add" method="post">
+                <f:form modelAttribute="client" action="../client/update" method="post">
+                    <f:hidden path="id"/>
                     <div class="field-input">
                         <p>Le prenom: </p>
                         <f:input path="firstname" type="text" name="prenom" placeholder="prenom"/>
@@ -64,7 +64,7 @@
                         </f:select> <br>
                     </div>--%>
                     <div class="field-input">
-                        <button class="button-right">Ajouter</button>
+                        <button class="button-right">Modifier</button>
                     </div>
                 </f:form>
             </div>

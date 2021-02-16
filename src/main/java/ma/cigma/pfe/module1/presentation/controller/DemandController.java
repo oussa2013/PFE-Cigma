@@ -1,10 +1,9 @@
-package ma.cigma.pfe.module1.presentation;
+package ma.cigma.pfe.module1.presentation.controller;
 
-import ma.cigma.pfe.module1.service.DemandServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import ma.cigma.pfe.module1.models.Demand;
+import ma.cigma.pfe.module1.presentation.models.DemandDto;
 import ma.cigma.pfe.module1.service.IDemandService;
 
 import java.util.List;
@@ -22,15 +21,15 @@ public class DemandController {
     @Autowired
     private IDemandService demandService;
 
-    Demand save(Demand demand) {
-        return demandService.save(demand);
+    DemandDto save(DemandDto demandDto) {
+        return demandService.save(demandDto);
     }
 
-    Demand update(Demand demand) {
-        return demandService.update(demand);
+    DemandDto update(DemandDto demandDto) {
+        return demandService.update(demandDto);
     }
 
-    List<Demand> findAll() {
+    List<DemandDto> findAll() {
         return demandService.findAll();
     }
 
@@ -38,7 +37,7 @@ public class DemandController {
         demandService.delete(id);
     }
 
-    Demand getById(Integer id) {
+    DemandDto getById(Integer id) {
         return demandService.getById(id);
     }
 

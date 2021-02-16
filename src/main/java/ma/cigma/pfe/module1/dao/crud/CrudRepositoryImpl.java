@@ -24,7 +24,7 @@ public abstract class CrudRepositoryImpl<T> implements CrudRepository<T> {
     private EntityManager entityManager ;
     private Class<T> genericType ;
 
-    public Class<T> getGenericType() {
+    private Class<T> getGenericType() {
         if(genericType == null){
             Type mySuperclass = getClass().getGenericSuperclass();
             Type tType = ((ParameterizedType)mySuperclass).getActualTypeArguments()[0];
@@ -46,9 +46,7 @@ public abstract class CrudRepositoryImpl<T> implements CrudRepository<T> {
     @Override
     public T save(T b) {
         try {
-            //entityManager.getTransaction().begin();
             entityManager.persist(b);
-            //entityManager.getTransaction().commit();
             return b;
         } catch (Exception e) {
             throw new BusinessException(e.getMessage());
@@ -57,12 +55,8 @@ public abstract class CrudRepositoryImpl<T> implements CrudRepository<T> {
 
     @Override
     public T update(T b) {
-
         try {
-            //entityManager.getTransaction().begin();
-            entityManager.merge(b);
-            //entityManager.getTransaction().commit();
-            return b;
+            return entityManager.merge(b);
         } catch (Exception e) {
             throw new BusinessException(e.getMessage());
         }
@@ -76,10 +70,7 @@ public abstract class CrudRepositoryImpl<T> implements CrudRepository<T> {
     @Override
     public T findById(Integer id) {
         try {
-            //entityManager.getTransaction().begin();
-            T entity = (T) entityManager.find(this.genericType, id);
-            //entityManager.getTransaction().commit();
-            return entity;
+            return (T) entityManager.find(this.genericType, id);
         } catch (Exception e) {
             throw new BusinessException(e.getMessage());
         }

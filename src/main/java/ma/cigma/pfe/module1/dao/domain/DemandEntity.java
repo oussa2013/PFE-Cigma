@@ -1,6 +1,5 @@
-package ma.cigma.pfe.module1.models;
+package ma.cigma.pfe.module1.dao.domain;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -20,7 +19,7 @@ import java.time.LocalDate;
 @Table(name = "TDemands")
 @Getter @Setter
 @ToString
-public class Demand {
+public class DemandEntity {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	//Identity = AUTOINCREMENT
@@ -45,7 +44,7 @@ public class Demand {
 
 	/*@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_client", nullable = false)
-	private Client client ;*/
+	private ClientDto client ;*/
 
 
 }

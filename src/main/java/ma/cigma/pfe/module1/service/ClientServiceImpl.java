@@ -1,9 +1,10 @@
 package ma.cigma.pfe.module1.service;
 
 import ma.cigma.pfe.module1.dao.IClientDao;
-import ma.cigma.pfe.module1.models.Client;
+import ma.cigma.pfe.module1.dao.domain.ClientEntity;
+import ma.cigma.pfe.module1.mapper.ClientMapper;
+import ma.cigma.pfe.module1.presentation.models.ClientDto;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,32 +18,41 @@ import java.util.List;
 @Transactional
 public class ClientServiceImpl implements IClientService {
 
-    @Autowired
-    IClientDao dao;
+    private IClientDao dao;
 
-    @Override
-    public Client save(Client client) {
-        return dao.save(client);
+    private ClientMapper clientMapper;
+
+    public ClientServiceImpl(IClientDao dao, ClientMapper clientMapper) {
+        this.dao = dao;
+        this.clientMapper = clientMapper;
     }
 
     @Override
-    public List<Client> findAll() {
-        return dao.findAll();
+    public ClientDto save(ClientDto client) {
+
+        ClientEntity clientEntity = dao.save(clientMapper.convertToEntity(client));
+        return clientMapper.convertToDto(clientEntity);
     }
 
     @Override
-    public Client update(Client client) {
-        return dao.update(client);
+    public List<ClientDto> findAll() {
+        return clientMapper.convertToListDto(dao.findAll());
     }
 
     @Override
-    public Client getById(Integer id) {
-        return dao.findById(id);
+    public ClientDto update(ClientDto client) {
+        ClientEntity clientEntity = dao.update(clientMapper.convertToEntity(client));
+        return clientMapper.convertToDto(dao.update(clientEntity));
+    }
+
+    @Override
+    public ClientDto getById(Integer id) {
+        return clientMapper.convertToDto(dao.findById(id));
     }
 
     @Override
     public void delete(Integer id) {
-         dao.delete(id);
+        dao.delete(id);
     }
 
 }

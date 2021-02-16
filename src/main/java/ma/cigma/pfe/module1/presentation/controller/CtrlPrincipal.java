@@ -1,12 +1,4 @@
-package ma.cigma.pfe.module1.presentation;
-
-import java.util.Scanner;
-
-import ma.cigma.pfe.module1.models.Client;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import ma.cigma.pfe.module1.models.Demand;
+package ma.cigma.pfe.module1.presentation.controller;
 
 /**
  * this main controller will be removed and replaced by
@@ -26,8 +18,8 @@ public class CtrlPrincipal {
 
         Scanner s = new Scanner(System.in);
         System.out.println("Saisir le number de l'interface \n" +
-                "1 - Client \n" +
-                "2 - Demand \n" +
+                "1 - ClientDto \n" +
+                "2 - DemandMapper \n" +
                 "====================\n");
         int tbl = s.nextInt();
         if (tbl == 1) {
@@ -49,7 +41,7 @@ public class CtrlPrincipal {
                 System.out.println("Saisir votre email");
                 String email = scanner.nextLine();
                 // construire l'objet
-                Client client = new Client();
+                ClientDto client = new ClientDto();
                 client.setFirstname(firstname);
                 client.setLastname(lastname);
                 client.setEmail(email);
@@ -66,7 +58,7 @@ public class CtrlPrincipal {
                 System.out.println("Saisir votre email");
                 String email = scanner.nextLine();
                 // construire l'objet
-                Client client = new Client();
+                ClientDto client = new ClientDto();
                 client.setId(id);
                 client.setFirstname(firstname);
                 client.setLastname(lastname);
@@ -105,7 +97,7 @@ public class CtrlPrincipal {
                 System.out.println("Saisir votre email");
                 String email = s.nextLine();
                 // construire l'objet
-                Demand d = new Demand();
+                DemandMapper d = new DemandMapper();
                 d.setCompte(code);
                 d.setNb(nb);
                 System.out.println("====================\n" + ctrlDemande.save(d));

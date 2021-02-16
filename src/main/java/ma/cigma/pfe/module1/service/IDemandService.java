@@ -1,6 +1,6 @@
 package ma.cigma.pfe.module1.service;
 
-import ma.cigma.pfe.module1.models.Demand;
+import ma.cigma.pfe.module1.presentation.models.DemandDto;
 
 import java.util.List;
 
@@ -13,13 +13,13 @@ import java.util.List;
  */
 public interface IDemandService {
 
-    Demand save(Demand demand);
+    DemandDto save(DemandDto demandDto);
 
-    Demand update(Demand demand);
+    DemandDto update(DemandDto demandDto);
 
-    List<Demand> findAll();
+    List<DemandDto> findAll();
 
-    Demand getById(Integer id);
+    DemandDto getById(Integer id);
 
     void delete(Integer id);
 }
